@@ -37,7 +37,8 @@ public class PessoaController {
   //pega um contato pelo seu ID
   @GetMapping(path = {"/{id}"})
   public ResponseEntity<Pessoa> findById(@PathVariable Integer id){
-    return repository.findById(id)
+    return repository.
+    findById(id)
             .map(record -> ResponseEntity.ok().body(record))
             .orElse(ResponseEntity.notFound().build());
   }
