@@ -41,5 +41,7 @@ jobs:
           node quality/self-check.mjs
           echo "quality-ok" > quality/dist/quality.ok
 
+      - name: JVM quality (PMD)
+        run: docker run --rm -v "$PWD:/src" pmdcode/pmd:7.28.0 check -d /src/senai-app-spring_v1/src/main/java -R rulesets/java/quickstart.xml --no-fail-on-violation
       - name: Docker build
         run: docker build -f quality/Dockerfile -t repository-quality .
